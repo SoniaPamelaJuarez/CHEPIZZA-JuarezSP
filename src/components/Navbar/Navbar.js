@@ -1,5 +1,6 @@
 import './Navbar.css';
-import Button from './Button';
+import Button from '../Button/Button';
+import CartWidget from '../CartWidget/CartWidget';
 
 const Navbar = () => {
     return (
@@ -7,6 +8,7 @@ const Navbar = () => {
             <div className='logo'>
             <img className='logo_img' src='./images/logo.png' alt='logo'/>
             </div>
+            <CartWidget />
             <div>
                 <Button label='Nuestras pizzas'/>
                 <Button label='Nosotros'/>
