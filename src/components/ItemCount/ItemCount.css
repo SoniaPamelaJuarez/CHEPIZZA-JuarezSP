@@ -1,0 +1,40 @@
+.container_father{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.count_container{
+    width: 40%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.count_button{
+    width: 100%;
+    border: 1px solid #FFC61A;
+    background-color: inherit;
+    color: #FFC61A;
+    font-size: medium;
+    font-weight: bold;
+    margin: 3px;
+}
+
+.cart_button{
+    padding: 5px;
+    width: 50%;
+    border: 1px solid #FFC61A;
+    background-color: inherit;
+    margin-bottom: 10px;
+    color: #FFC61A;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.img_cart{
+    width: 10%;
+}
