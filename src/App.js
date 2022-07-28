@@ -10,7 +10,8 @@ function App() {
       <header className="App-header">
         <Navbar  />
         <ItemListContainer greeting="¡PIZZA A LA PIEDRA, CON MUUUUCHO QUESO!"/>
-        <img src={logo} className="App-logo" alt="logo" />
+
+        {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -21,7 +22,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a> */}
       </header>
     </div>
   );
