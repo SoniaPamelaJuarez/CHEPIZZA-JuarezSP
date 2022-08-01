@@ -1,0 +1,9 @@
+.container_itemDetail{
+    width: 60%;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}

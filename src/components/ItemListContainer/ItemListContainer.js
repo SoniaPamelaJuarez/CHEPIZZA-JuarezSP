@@ -6,9 +6,9 @@ import ItemList from '../ItemList/ItemList';
 
 const ItemListContainer = ({ greeting }) => {
 
-    const handleOnAdd = (quantity) => {
-        alert(`Agregaste ${quantity} productos`);
-    }
+    // const handleOnAdd = (quantity) => {
+    //     alert(`Agregaste ${quantity} productos`);
+    // }
 
     const [products, setProducts] = useState([]); //inicia con un array vacio
     const [loading, setLoading] = useState(true)
@@ -35,10 +35,10 @@ const ItemListContainer = ({ greeting }) => {
         <div className='container'>
             <h1 className="item_greeting">{greeting}</h1>
             <ItemList products={products}/> {/*estoy pasando por props un estado*/}
-            <div className='card_container'>
+            {/* <div className='card_container'>
                 <img className='card_img' src='images/pizza.png' alt='pizza'/>
                 <Counter initial={1} stock={10} onAdd={handleOnAdd}/>
-            </div>
+            </div> */}
         </div>
     );
 }
