@@ -24,3 +24,15 @@
     text-align: center;
     font-weight: bold;
 }
+
+.link_verDetalle{
+    padding: 5px;
+    width: 50%;
+    border: 1px solid #FFC61A;
+    background-color: inherit;
+    margin-bottom: 10px;
+    color: #FFC61A;
+    font-size: medium;
+    font-weight: bold;
+    text-decoration: none;
+}

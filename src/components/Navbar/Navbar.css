@@ -5,6 +5,8 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    color: #FFC61A;
+    font-size:x-large;
 }
 
 .logo{
@@ -14,4 +16,13 @@
 
 .logo_img{
     width: 100%;
+}
+
+.home_button{
+    color: #FFC61A;
+    background-color: inherit;
+    margin:10px;
+    font-size: 90%;
+    font-weight: lighter;
+    text-decoration: none;
 }

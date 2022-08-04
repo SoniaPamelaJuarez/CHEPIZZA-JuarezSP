@@ -20,7 +20,7 @@ const Counter = ({stock, initial, onAdd}) => {
                 <p>{count}</p>
                 <button disabled={count === stock} className='count_button' onClick={increment}>+</button>
             </div>
-            <button disabled={stock === 0 ? true : null} onClick={() => onAdd(count)} className='cart_button'>Agregar al <img className='img_cart' src='images/cart.png' alt='cart'/></button>
+            <button disabled={stock === 0 ? true : null} onClick={() => onAdd(count)} className='cart_button'>Agregar al <img className='img_cart' src='/images/cart.png' alt='cart'/></button>
         </div>
     );
 }

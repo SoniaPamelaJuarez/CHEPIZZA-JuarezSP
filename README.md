@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+Este proyecto fue creado para la pizzería de un amigo que vive en Cancún, es un E-commerce creado con React js.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Instalación: 
 
-## Available Scripts
+Tener descargados los programas Visual Studio Code (VSC) y Node.js 
 
-In the project directory, you can run:
+# Clonar repositorio de GitHub
 
-### `npm start`
+Ingresamos a VSC, abrimos una terminal bash y clonamos el repositorio: git clone https://github.com/SoniaPamelaJuarez/CHEPIZZA-JuarezSP.git
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Librerías utilizadas Node.js & npm
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Create React App: para la creación de la app
 
-### `npm test`
+React icons: para exportar iconos en linea
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+React router: para el manejo de las rutas en la app
 
-### `npm run build`
+# Hooks
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+UseState: para guardar estados en memoria
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+UseEffect: permite que la funcion se ejecuto despues de que se monte el componente
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+UseParams: para poder usar un parametro en la url, retorna un objeto
 
-### `npm run eject`
+# Scripts disponibles 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+npm start: corre la aplicación en modo desarrollador
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Para abrir [http://localhost:3000](http://localhost:3000) para correr la aplicación en el navegador
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Para cerrar presionamos Ctrl + c
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Creación de la aplicación
 
-## Learn More
+Para una mejora en el rendimiento y el entendimiento de la App, se creo una carpeta "componentes" en donde se fue organizando componente a componente cada archivo js y css correspondiente.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. La barra de navegación se encuentra en la carpeta Navbar, ahi encontramos los archivos Navbar.js y Navbar.css. Este componente sirve para la navegación de la app.
+2. CartWidget: es el carrito de Navbar, aquí se verá la totalidad de productos seleccionados.
+3. ItemListContainer: guardamos los productos que obtenemos del asyncMock en un estado (useState), utilizamos un useState para que se monte el componente antes. Es en donde se montan las cards de Item a través del mapeo realizado en ItemList
+4. ItemDetailContainer: es en donde se monta el ItemDetail, tiene el mismo funcionamiento de ItemListContainer. 
+5. ItemCount: es el contador de los productos que quiero agregar en el carrito. 
+6. Button: Son los links que se encuentran en el NavBar. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# GIF 
 
-### Code Splitting
+Puede ver una vista previa de la aplicación "React-App.gif"
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+

@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import './Button.css';
 
 const Button = (props) => {
     return (
-        <button className='button' href='#' >{props.label}</button>
+        <Link to={`/category/${props.categoryId}`} className='button' href='#' >{props.label}</Link>
     )
 }
 

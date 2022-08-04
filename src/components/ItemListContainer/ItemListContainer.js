@@ -1,31 +1,48 @@
 import './ItemListContainer.css';
-import Counter from '../ItemCount/ItemCount';
-import { getProducts } from '../../asyncMock';
+import { getProducts, getProductsByCategory } from '../../asyncMock';
 import { useState, useEffect } from 'react';
 import ItemList from '../ItemList/ItemList';
+import { useParams } from 'react-router-dom';
 
-const ItemListContainer = ({ greeting }) => {
-
-    // const handleOnAdd = (quantity) => {
-    //     alert(`Agregaste ${quantity} productos`);
-    // }
+const ItemListContainer = ({ greeting, setPage }) => {
 
     const [products, setProducts] = useState([]); //inicia con un array vacio
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
+
+    const { categoryId } = useParams()
 
     useEffect(() => {
-        getProducts().then(response => {
-            setProducts(response)
-        }).catch(error => {
-            console.log(error)
-        }).finally(() => {
-            setLoading(false)
-        })
-    }, []);
 
-    // const productsTransforms = products.map(product => (
-    //     <li>{product.name}</li>
-    // ))
+        // const asyncFunction = categoryId ? getProductsByCategory : getProducts; //cambio nombre de referencia de las funciones 
+
+        // asyncFunction(categoryId).then(response => {
+        //     setProducts(response)
+        // }).catch(error => {
+        //     console.log(error)
+        // }).finally(() => {
+        //     setLoading(false)
+        // })
+
+        if(categoryId){
+            getProductsByCategory(categoryId).then(response => {
+                setProducts(response)
+            }).catch(error => {
+                console.log(error)
+            }).finally(() => {
+                setLoading(false)
+            })
+        }else{
+            getProducts().then(response => {
+                setProducts(response)
+            }).catch(error => {
+                console.log(error)
+            }).finally(() => {
+                setLoading(false)
+            })
+        }
+        }, [categoryId]); //vuelve a ejecutr la funcion cuando hay un cambio de estado (en params.categoryId)
+        
+
 
     if (loading) {
         return <h1>Cargando los productos...</h1>
@@ -34,11 +51,7 @@ const ItemListContainer = ({ greeting }) => {
     return (
         <div className='container'>
             <h1 className="item_greeting">{greeting}</h1>
-            <ItemList products={products}/> {/*estoy pasando por props un estado*/}
-            {/* <div className='card_container'>
-                <img className='card_img' src='images/pizza.png' alt='pizza'/>
-                <Counter initial={1} stock={10} onAdd={handleOnAdd}/>
-            </div> */}
+            <ItemList products={products} setPage={setPage}/> {/*estoy pasando por props un estado*/}
         </div>
     );
 }
