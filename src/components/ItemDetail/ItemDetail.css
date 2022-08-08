@@ -9,3 +9,17 @@
     flex-direction: row;
     padding: 10px;
 }
+
+.link_comprar{
+    text-decoration: none;
+    color: #B51622;
+    font-weight:bolder;
+    font-size: x-large;
+    padding: 5px;
+    background-color: #FFC61A;
+}
+
+.link_comprar:hover{
+    background-color: #B51622;
+    color: #FFC61A;
+}
