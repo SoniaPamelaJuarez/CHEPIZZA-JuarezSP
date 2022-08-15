@@ -9,9 +9,9 @@ const ItemDetail = ({ id, name, img, price, stock, description_detalle }) => {
 
     const [quantity, setQuantity] = useState (0);
 
-    const { addItem } = useContext(CartContext)
+    const { addItem, getProductQuantity } = useContext(CartContext)
 
-    // const quantityAdded = getProductQuantity(id)
+    const quantityAdded = getProductQuantity(id)
 
     const handleOnAdd = (quantity) => {
         console.log('Agregaste al carrito')
@@ -25,7 +25,7 @@ const ItemDetail = ({ id, name, img, price, stock, description_detalle }) => {
             <div className='card_container_item row'>
                 <img className='card_img_item' src={img} alt='pizza_img'/>
                 <div>
-                {quantity > 0 ? <Link className='link_comprar' to='/cart'>Finalizar Compra</Link> :<Counter initial={0} stock={stock} onAdd={handleOnAdd}/>}
+                {quantity > 0 ? <Link className='link_comprar' to='/cart'>Finalizar Compra</Link> :<Counter stock={stock} onAdd={handleOnAdd} initial={quantityAdded}/>}
                 <p className='letras_item'>{name} ${price}</p>
                 <p className='letras_item'>Stock disponible: {stock}</p>
                 <p className='letras_item'>{description_detalle}</p>

@@ -1,26 +1,31 @@
 import './ItemCount.css';
 import {useState} from 'react';
 
-const Counter = ({stock, initial, onAdd}) => {
+const Counter = ({stock, initial=1, onAdd}) => {
 
     //hook de estado
     const [quantity, setQuantity] = useState(initial);
 
-    const decrement = () =>{
-        setQuantity(quantity-1);
+    const increment = () =>{
+        if(quantity < stock) {
+            setQuantity(quantity+1);
+        }
     }
 
-    const increment = () =>{
-        setQuantity(quantity+1);
+    const decrement = () =>{
+        if(quantity > 1) {
+            setQuantity(quantity-1);
+        }
     }
+
     return(
         <div className='container_father'>
             <div className='count_container'>
-                <button disabled={quantity === initial} className='count_button' onClick={decrement}>-</button>
+                <button className='count_button' onClick={decrement}>-</button>
                 <p>{quantity}</p>
-                <button disabled={quantity === stock} className='count_button' onClick={increment}>+</button>
+                <button className='count_button' onClick={increment}>+</button>
             </div>
-            <button disabled={stock === 0 ? true : null} onClick={() => onAdd(quantity)} className='cart_button'>Agregar al <img className='img_cart' src='/images/cart.png' alt='cart'/></button>
+            <button onClick={() => onAdd(quantity)} className='cart_button'>Agregar al <img className='img_cart' src='/images/cart.png' alt='cart'/></button>
         </div>
     );
 }

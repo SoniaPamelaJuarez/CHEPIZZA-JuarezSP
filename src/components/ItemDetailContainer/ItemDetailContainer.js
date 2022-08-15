@@ -4,9 +4,9 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import './ItemDetailContainer.css';
 import { useParams } from "react-router-dom";
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = ({ addItem }) => {
     
-    const [product, setProduct] = useState ({});
+    const [product, setProduct] = useState ();
     const [loading, setLoading] = useState(true);
     
     const { productId } = useParams () //el hook useParams retorna un objeto
@@ -28,7 +28,7 @@ const ItemDetailContainer = () => {
 
     return (
         <div className="ItemDetail_container">
-            <ItemDetail {...product}/>
+            <ItemDetail {...product} addItem={addItem}/>
         </div>
     )
 }
