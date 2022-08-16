@@ -1,0 +1,32 @@
+.container_lista{
+    margin: 10px;
+}
+
+.products_title{
+    display: flex;
+    justify-content: center;
+    align-items: space-around;
+}
+
+.button_style{
+    background-color: black;
+    color: #FFC61A;
+    font-size: medium;
+    font-weight: bold;
+    margin: 2px;
+    padding: 5px;
+    border: 1px solid #FFC61A;
+}
+
+.button_style:hover{
+    font-size: 105%;
+}
+
+.buy_total{
+    text-align: center;
+    color: #FFC61A;
+    margin: 100px;
+    padding: 10px;
+    background-color: black;
+    box-shadow: 2px 2px 2px gray;
+}

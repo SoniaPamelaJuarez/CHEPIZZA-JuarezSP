@@ -1,7 +1,10 @@
 .img_container{
-    width: 30%;
+    width: 20%;
+    color: #FFC61A;
+    text-decoration: none;
 }
 
 .img_cart{
-    width: 10%;
+    width: 20%;
+    padding-right: 10px;
 }
