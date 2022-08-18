@@ -11,15 +11,14 @@ const CartWidget = () => {
 
     const totalQuantity = getTotal()
 
-    if (totalQuantity === 0) {
-        return 
-    }
 
     return (
-        <Link to='/cart' className='img_container'>
-            <img className='img_cart' src='/images/cart.png' alt='cart' />
-            {quantity}
-        </Link>
+        <div>
+            {totalQuantity >0 && <Link className='cartW_container' to='/cart'>
+                <img className='img_cartW' src='/images/cart.png' alt='cart' />
+                {quantity}
+            </Link>}
+        </div>
     );
 }
 

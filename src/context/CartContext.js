@@ -54,7 +54,6 @@ export const CartContextProvider = ({ children }) =>{
         const product = cart.find(prod => prod.id === id)
         return product?.quantity
     }
-    console.log(cart)
 
     const getTotal = () => {
         let accu = 0

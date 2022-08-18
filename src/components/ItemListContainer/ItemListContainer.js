@@ -1,8 +1,9 @@
-import './ItemListContainer.css';
-import { getProducts, getProductsByCategory } from '../../asyncMock';
+import './ItemListContainer.css';  
 import { useState, useEffect } from 'react';
 import ItemList from '../ItemList/ItemList';
 import { useParams } from 'react-router-dom';
+import { getDocs, collection, query, where } from 'firebase/firestore';
+import { db } from '../../services/firebase/index';
 
 const ItemListContainer = ({ greeting, setPage }) => {
 
@@ -12,42 +13,34 @@ const ItemListContainer = ({ greeting, setPage }) => {
     const { categoryId } = useParams()
 
     useEffect(() => {
+        setLoading(true)
 
-        // const asyncFunction = categoryId ? getProductsByCategory : getProducts; //cambio nombre de referencia de las funciones 
+        //Para filtrar por categorias uso query y where
+        const collectionRef = !categoryId 
+        ? collection(db, 'products')
+        : query(collection(db, 'products'), where ('category', '==', categoryId))
 
-        // asyncFunction(categoryId).then(response => {
-        //     setProducts(response)
-        // }).catch(error => {
-        //     console.log(error)
-        // }).finally(() => {
-        //     setLoading(false)
-        // })
-
-        if(categoryId){
-            getProductsByCategory(categoryId).then(response => {
-                setProducts(response)
-            }).catch(error => {
-                console.log(error)
-            }).finally(() => {
-                setLoading(false)
+        //traigo los datos de mi base de datos de la coleccion products y retorna una promesa
+        getDocs(collectionRef).then(res => {
+            // console.log(res)
+            const products = res.docs.map (doc => {
+                const values = doc.data()
+                // console.log(values)
+                return {id:doc.id, ...values}
             })
-        }else{
-            getProducts().then(response => {
-                setProducts(response)
-            }).catch(error => {
-                console.log(error)
-            }).finally(() => {
-                setLoading(false)
-            })
+            console.log(products)
+            setProducts(products)
+        }).catch(e => {
+            console.log(e)
+        }).finally(() => {
+            setLoading(false)
+        })
+    }, [categoryId]) //vuelve a ejecutar la funcion cuando hay un cambio de estado (en params.categoryId)
+
+        if(loading){
+            return <h1>Cargando los productos...</h1>
         }
-        }, [categoryId]); //vuelve a ejecutr la funcion cuando hay un cambio de estado (en params.categoryId)
         
-
-
-    if (loading) {
-        return <h1>Cargando los productos...</h1>
-    }
-
     return (
         <div className='container'>
             <h1 className="item_greeting">{greeting}</h1>

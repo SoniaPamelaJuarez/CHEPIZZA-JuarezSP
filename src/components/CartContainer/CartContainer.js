@@ -11,9 +11,9 @@ const Cart= () => {
     return(
         <div className='container_lista'>
             <div className='products_title'>
-                <h1>Todos tus productos seleccionados</h1>
+                {total>0 ? <h1>Todos tus productos seleccionados</h1> : <h1>¡Todavía no tenes nada en el carrito! </h1>}
             </div>
-            { cart.map(th => <CartItem key={th.id} {...th}/>) }
+            { cart.map(item => <CartItem key={item.id} {...item}/>) }
             <div className='buy_total'>
             <h1>Total: ${total}</h1>
             <button className="button_style">Comprar</button>
