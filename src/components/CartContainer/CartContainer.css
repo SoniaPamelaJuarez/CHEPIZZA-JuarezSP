@@ -16,6 +16,7 @@
     margin: 2px;
     padding: 5px;
     border: 1px solid #FFC61A;
+    text-decoration: none;
 }
 
 .button_style:hover{

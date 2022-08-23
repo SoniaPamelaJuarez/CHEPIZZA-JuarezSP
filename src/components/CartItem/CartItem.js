@@ -27,7 +27,7 @@ const CartItem = ({ id, name, quantity, price }) => {
                     <th>{name}</th>
                     <th>${price}</th>
                     <th>${price * quantity}</th>
-                    <th><button className="button_style" onClick={() => handleRemove(id)}>Eliminar</button></th>
+                    <th><button className="button_style" onClick={() => handleRemove(id)}>X</button></th>
                 </tr>
             </thead>
         </table>

@@ -1,12 +1,14 @@
 import './CartContainer.css';
-import { useContext } from "react"
-import { CartContext } from '../../context/CartContext'
-import CartItem from '../CartItem/CartItem'
+import { useContext } from "react";
+import { CartContext } from '../../context/CartContext';
+import CartItem from '../CartItem/CartItem';
+import { Link } from 'react-router-dom';
 
 const Cart= () => {
-    const { cart, clearCart, getTotal} = useContext(CartContext)  
+    const { cart, clearCart, getTotal} = useContext(CartContext)
 
     const total = getTotal()
+    
 
     return(
         <div className='container_lista'>
@@ -16,8 +18,8 @@ const Cart= () => {
             { cart.map(item => <CartItem key={item.id} {...item}/>) }
             <div className='buy_total'>
             <h1>Total: ${total}</h1>
-            <button className="button_style">Comprar</button>
-            <button onClick={() => clearCart()} className="button_style">Borrar todo</button>
+            <Link to='/checkout'className="button_style">Checkout</Link>
+            <button onClick={() => clearCart()} className="button_style">Limpiar carrito</button>
             </div>
         </div>
     )

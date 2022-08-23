@@ -2,14 +2,15 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import CartContainer from './components/CartContainer/CartContainer';
+import Checkout from './components/Checkout/Checkout';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { CartContextProvider } from './context/CartContext';
-import CartContainer from './components/CartContainer/CartContainer';
+
 
 
 
 function App() {
-
   return (
     <div className="App">
       <CartContextProvider>
@@ -20,6 +21,8 @@ function App() {
             <Route path='category/:categoryId' element={<ItemListContainer greeting="Estamos filtrando"/>}/>
             <Route path='/detail/:productId' element={<ItemDetailContainer />} />
             <Route path='/cart' element={<CartContainer/>} />
+            <Route path='/checkout' element={<Checkout />} />
+            <Route path='*' element={<h1>PAGE NOT FOUND 404</h1>} />
           </Routes>
         </BrowserRouter>
       </CartContextProvider>
