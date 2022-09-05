@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+#firestore
+.env
+
 # testing
 /coverage
 
