@@ -1,50 +1,25 @@
 import './ItemListContainer.css';  
-import { useState, useEffect } from 'react';
 import ItemList from '../ItemList/ItemList';
 import { useParams } from 'react-router-dom';
-import { getDocs, collection, query, where } from 'firebase/firestore';
-import { db } from '../../services/firebase/index';
+import { getProducts } from '../../services/firebase/firestore';
+import { useAsync } from '../../hooks/useAsync';
 
 const ItemListContainer = ({ greeting, setPage }) => {
 
-    const [products, setProducts] = useState([]); //inicia con un array vacio
-    const [loading, setLoading] = useState(true);
-
     const { categoryId } = useParams()
+    const { isLoad, data, er} = useAsync(() => getProducts(categoryId), [categoryId])
 
-    useEffect(() => {
-        setLoading(true)
-
-        //Para filtrar por categorias uso query y where
-        const collectionRef = !categoryId 
-        ? collection(db, 'products')
-        : query(collection(db, 'products'), where ('category', '==', categoryId))
-
-        //traigo los datos de mi base de datos de la coleccion products y retorna una promesa
-        getDocs(collectionRef).then(res => {
-            // console.log(res)
-            const products = res.docs.map (doc => {
-                const values = doc.data()
-                // console.log(values)
-                return {id:doc.id, ...values}
-            })
-            console.log(products)
-            setProducts(products)
-        }).catch(e => {
-            console.log(e)
-        }).finally(() => {
-            setLoading(false)
-        })
-    }, [categoryId]) //vuelve a ejecutar la funcion cuando hay un cambio de estado (en params.categoryId)
-
-        if(loading){
+        if(isLoad){
             return <h1>Cargando los productos...</h1>
+        }
+        if(er){
+            return <h1>Hubo un error</h1>
         }
         
     return (
         <div className='container'>
             <h1 className="item_greeting">{greeting}</h1>
-            <ItemList products={products} setPage={setPage}/> {/*estoy pasando por props un estado*/}
+            <ItemList products={data} setPage={setPage}/> {/*estoy pasando por props un estado*/}
         </div>
     );
 }

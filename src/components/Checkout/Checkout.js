@@ -92,7 +92,6 @@ const Checkout = () => {
                 <input type='number' onChange = {(i) => {setPhone(i.target.value)}}/>
                 <label>E-mail:</label>
                 <input type='text' onChange = {(i) => {setEmail(i.target.value)}}/>
-
             </form>
             <button type='submit' className="button_style" onClick={createOrder}>Generar Orden de compra</button>
         </div>

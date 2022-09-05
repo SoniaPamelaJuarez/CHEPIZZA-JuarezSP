@@ -24,6 +24,12 @@ UseEffect: permite que la funcion se ejecuto despues de que se monte el componen
 
 UseParams: para poder usar un parametro en la url, retorna un objeto
 
+UseAsync: custom hook creado para optimización del código
+
+# BackEnd
+
+La base de datos de la apliación fue implementado con Firebase/Firestore. 
+
 # Scripts disponibles 
 
 npm start: corre la aplicación en modo desarrollador
@@ -38,7 +44,7 @@ Para una mejora en el rendimiento y el entendimiento de la App, se creo una carp
 
 1. La barra de navegación se encuentra en la carpeta Navbar, ahi encontramos los archivos Navbar.js y Navbar.css. Este componente sirve para la navegación de la app.
 2. CartWidget: es el carrito de Navbar, aquí se verá la totalidad de productos seleccionados.
-3. ItemListContainer: guardamos los productos que obtenemos del asyncMock en un estado (useState), utilizamos un useState para que se monte el componente antes. Es en donde se montan las cards de Item a través del mapeo realizado en ItemList
+3. ItemListContainer: guardamos los productos que obtenemos de FireStore en un estado (useState), utilizamos un useState para que se monte el componente antes. Es en donde se montan las cards de Item a través del mapeo realizado en ItemList
 4. ItemDetailContainer: es en donde se monta el ItemDetail, tiene el mismo funcionamiento de ItemListContainer. 
 5. ItemCount: es el contador de los productos que quiero agregar en el carrito. 
 6. Button: Son los links que se encuentran en el NavBar. 
