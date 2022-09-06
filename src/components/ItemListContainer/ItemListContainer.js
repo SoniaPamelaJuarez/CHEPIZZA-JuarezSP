@@ -10,7 +10,9 @@ const ItemListContainer = ({ greeting, setPage }) => {
     const { isLoad, data, er} = useAsync(() => getProducts(categoryId), [categoryId])
 
         if(isLoad){
-            return <h1>Cargando los productos...</h1>
+            return (
+                <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            )
         }
         if(er){
             return <h1>Hubo un error</h1>

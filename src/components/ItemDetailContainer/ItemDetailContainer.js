@@ -11,7 +11,9 @@ const ItemDetailContainer = ({ addItem }) => {
     const { data, isLoad, er } = useAsync(() => getProductsById(productId), [productId])
 
     if (isLoad) {
-        return <h1>Cargando detalle del producto...</h1>
+        return (
+            <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        )
     }
     if(er){
         return <h1>Hubo un error</h1>
@@ -19,7 +21,7 @@ const ItemDetailContainer = ({ addItem }) => {
 
 
     return (
-        <div className="ItemDetail_container">
+        <div className="ItemDetail_container_1">
             <ItemDetail {...data} addItem={addItem}/>
         </div>
     )
