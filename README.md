@@ -44,6 +44,8 @@ Refactorización firestore: abstraemos firestore de ItemListContainer e ItemDeta
 
 Custom Hook: useAsync, utilizado en ItemListContainer e ItemDetailContainer.
 
+Adapters: creación de una función adaptadora para tener control sobre la base de datos en firestore y poder controlar los productos independientemente del nombre que se utilice para los mismos. 
+
 # Creación de la aplicación
 
 Para una mejora en el rendimiento y el entendimiento de la App, se creo una carpeta "componentes" en donde se fue organizando componente a componente cada archivo js y css correspondiente.
