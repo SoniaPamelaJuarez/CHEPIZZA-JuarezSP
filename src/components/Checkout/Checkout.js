@@ -1,9 +1,10 @@
 import './Checkout.css';
 import { useContext, useState } from "react";
 import { CartContext } from '../../context/CartContext';
-import { addDoc, collection, getDocs, Timestamp, updateDoc, query, where, documentId, writeBatch } from 'firebase/firestore';
+import { addDoc, collection, getDocs, Timestamp, query, where, documentId, writeBatch } from 'firebase/firestore';
 import { db } from '../../services/firebase/index';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const Checkout = () => {
 
@@ -19,15 +20,31 @@ const Checkout = () => {
 
     if(purchased === 1){
         return(
-            <div>
-                <h1>Gracias por su compra {name}!</h1>
-                <h2>Su número de orden es: #{orderNumb}</h2>
+            <div className='form_container'>
+                <div className='form_buy'>
+                    <h1>Gracias por su compra {name}!</h1>
+                    <h2>Su número de orden es: #{orderNumb}</h2>
+                </div>
             </div>
+            
         )
     }
 
-    const createOrder = async () => {
+    const createOrder = async (e) => {
         try {
+            e.preventDefault();
+
+            if(!validateForm()) return;
+
+            if(cart.length === 0){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Tienes el carrito vacío',
+                    text: 'Something went wrong!',
+                })
+                return false;
+            }
+
             const objectOrder = {
                 buyer:{name: name, phone: phone, email: email},
                 items:cart,
@@ -81,19 +98,48 @@ const Checkout = () => {
         }
     }
 
+    const validateForm = () => {
+        if (name.length <= 0) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Complete el nombre',
+                text: 'Something went wrong!',
+            })
+            return false;
+        }
+        if (phone.length <= 0 || isNaN(parseInt(phone))) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Complete el teléfono',
+                text: 'Something went wrong!',
+            })
+            return false;
+        }
+        if (email.length <= 0 || !String(email).includes("@")) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Inserte un correo electrónico válido',
+                text: 'Something went wrong!',
+            })
+            return false;
+        }
+        return true
+    }
+
 
     return (
         <div className='form_container'>
             <h2>Formulario de compra</h2>
             <form className='form_buy'>
                 <label>Nombre:</label>
-                <input type='text' onChange = {(i) => {setName(i.target.value)}} />
+                <input required type='text' onChange = {(i) => {setName(i.target.value)}} />
                 <label>Teléfono:</label>
-                <input type='number' onChange = {(i) => {setPhone(i.target.value)}}/>
+                <input required type='number' onChange = {(i) => {setPhone(i.target.value)}}/>
                 <label>E-mail:</label>
-                <input type='text' onChange = {(i) => {setEmail(i.target.value)}}/>
+                <input required type='text' onChange = {(i) => {setEmail(i.target.value)}}/>
             </form>
             <button type='submit' className="button_style" onClick={createOrder}>Generar Orden de compra</button>
+            <Link className="button_style" to='/cart'>Regresar al carrito</Link>
         </div>
     )
 }

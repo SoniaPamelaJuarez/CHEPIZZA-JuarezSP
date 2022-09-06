@@ -12,6 +12,7 @@
 .card_container{
     background-color: black;
     width: 30%;
+    height: 50%;
     border: 5px solid #FFC61A;
     border-radius: 5%;
     display: flex;
